@@ -25,4 +25,7 @@ public class ResourceReader {
         }
     }
 
+    public void setResourcePath(String resourcePath) {
+        this.resourcePath = resourcePath;
+    }
 }

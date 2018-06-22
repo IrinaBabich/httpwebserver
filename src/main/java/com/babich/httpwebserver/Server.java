@@ -8,6 +8,7 @@ public class Server {
 
     private ResourceReader resourceReader;
     private int port;
+    String resourcePath;
 
     public void start() throws IOException {
         try (ServerSocket server = new ServerSocket(port)) {
@@ -17,7 +18,10 @@ public class Server {
                      BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
                      BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 
-                    RequestHandler requestHandler = new RequestHandler(BufferedReader reader, BufferedWriter writer, resourceReader);
+                    RequestHandler requestHandler = new RequestHandler();
+                    requestHandler.setReader(reader);
+                    requestHandler.setWriter(writer);
+                    requestHandler.setResourcePath(resourcePath);
                     requestHandler.handle();
                 }
             }

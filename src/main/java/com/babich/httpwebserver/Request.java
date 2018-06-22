@@ -27,7 +27,7 @@ public class Request {
         return headers;
     }
 
-    public void setMap(Map<String, String> headers) {
+    public void setHeaders(Map<String, String> headers) {
         this.headers = headers;
     }
 }
