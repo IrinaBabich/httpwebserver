@@ -12,7 +12,7 @@ public class RequestHandler {
 
     public void handle() throws IOException {
         RequestParser requestParser = new RequestParser();
-        Request request = requestParser.parceRequest(reader);
+        Request request = requestParser.parseRequest(reader);
         ResourceReader resourceReader = new ResourceReader(resourcePath);
         ResponseWriter responseWriter = new ResponseWriter();
         responseWriter.setWriter(writer);

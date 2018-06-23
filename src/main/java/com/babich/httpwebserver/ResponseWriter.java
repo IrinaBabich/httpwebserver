@@ -19,4 +19,8 @@ public class ResponseWriter {
         writer.write("\n");
         writer.flush();
     }
+
+    public void setWriter(BufferedWriter writer) {
+        this.writer = writer;
+    }
 }
