@@ -20,12 +20,14 @@ public class ResourceReader {
                 content += line;
             }
             return content;
-        } catch (FileNotFoundException e) {
-            return null;
         }
     }
 
     public void setResourcePath(String resourcePath) {
         this.resourcePath = resourcePath;
+    }
+
+    public String getResourcePath() {
+        return resourcePath;
     }
 }

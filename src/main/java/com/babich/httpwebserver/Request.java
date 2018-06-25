@@ -3,9 +3,9 @@ package com.babich.httpwebserver;
 import java.util.Map;
 
 public class Request {
-    String url;
-    HttpMethod httpMethod;
-    Map<String, String> headers;
+    private String url;
+    private HttpMethod httpMethod;
+    private Map<String, String> headers;
 
     public HttpMethod getHttpMethod() {
         return httpMethod;

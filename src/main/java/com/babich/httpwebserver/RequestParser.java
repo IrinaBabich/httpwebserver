@@ -2,21 +2,21 @@ package com.babich.httpwebserver;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.HashMap;
 import java.util.Map;
 
 public class RequestParser {
-    private Request request = new Request();
 
     public Request parseRequest(BufferedReader reader) throws IOException {
         String requestLine = reader.readLine();
         Request request = new Request();
         injectUrlAndMethod(request, requestLine);
+        String line;
+        while (!(line = reader.readLine()).isEmpty()) ;
         return request;
     }
 
-    public void injectUrlAndMethod(Request request, String requestLine) throws IOException{
+    public void injectUrlAndMethod(Request request, String requestLine) throws IOException {
         String[] split = requestLine.split(" ");
         String httpMethodStr = split[0];
         HttpMethod httpMethod = HttpMethod.getHttpMethodByName(httpMethodStr);

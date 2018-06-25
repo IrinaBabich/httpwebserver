@@ -21,7 +21,7 @@ public class Server {
                     RequestHandler requestHandler = new RequestHandler();
                     requestHandler.setReader(reader);
                     requestHandler.setWriter(writer);
-                    requestHandler.setResourcePath(resourcePath);
+                    requestHandler.setResourcePath(resourceReader.getResourcePath());
                     requestHandler.handle();
                 }
             }

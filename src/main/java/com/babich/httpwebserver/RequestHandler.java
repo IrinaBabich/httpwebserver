@@ -2,6 +2,7 @@ package com.babich.httpwebserver;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class RequestHandler {
@@ -18,12 +19,13 @@ public class RequestHandler {
         responseWriter.setWriter(writer);
         resourceReader.setResourcePath(resourcePath);
         String resourcePath = request.getUrl();
-        String content = resourceReader.readContent(resourcePath);
-
-        if(request.getHttpMethod().equals(HttpMethod.GET)) {
+        try {
+            String content = resourceReader.readContent(resourcePath);
+            // esli vse o, piwem content v suckass otvet
             responseWriter.writeSuccessResponse(content);
-        } else {
-            responseWriter.writeNotFoundResponse(content);
+        }catch (FileNotFoundException e){
+            // esli faila net, to piwem not found
+            responseWriter.writeNotFoundResponse();
         }
     }
 
@@ -39,5 +41,3 @@ public class RequestHandler {
         this.writer = writer;
     }
 }
-
-
