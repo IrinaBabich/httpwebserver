@@ -21,10 +21,10 @@ public class RequestHandler {
         String resourcePath = request.getUrl();
         try {
             String content = resourceReader.readContent(resourcePath);
-            // esli vse o, piwem content v suckass otvet
+            // если ответ ок, пишем контент в ответ
             responseWriter.writeSuccessResponse(content);
         }catch (FileNotFoundException e){
-            // esli faila net, to piwem not found
+            // если файла нет, пишем not found
             responseWriter.writeNotFoundResponse();
         }
     }
