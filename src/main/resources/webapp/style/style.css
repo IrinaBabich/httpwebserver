@@ -1,0 +1,114 @@
+.main-bg {
+    background-image: url("../images/Layer.jpg");
+    width: 1366px;
+    height: 768px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Verdana, sans-serif;
+}
+.container{
+    width: 1064px;
+    margin: 0 auto;
+}
+.header {
+    padding-top: 49px;
+    margin-bottom: 45px;
+}
+.header-content {
+    display: flex;
+    justify-content: space-between;
+}
+.top-logo {
+    margin-bottom: 5px;
+}
+.top-logo-text{
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    color: #fff;
+}
+.top-logo-text-big{
+    font-size: 29px;
+}
+.top-contacts-text {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: right;
+    margin-bottom: 5px;
+}
+.tours {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.tour-type {
+    flex: 0 0 305px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 55px;
+}
+.tour-img {
+    margin-bottom: 20px;
+}
+.tour-caption {
+    position: absolute;
+    bottom: 42px;
+    width: 100%;
+    padding: 17px 21px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #f26522;
+    box-sizing: border-box;
+    opacity: 0; /* total opacity, we couldn't see block, but it is available :) */
+    transition: opacity 1s; /* animation for appearance - opacity changes not immediately, but little by little in range of 1 second */
+}
+.tour-type:hover .tour-caption {
+    opacity: 1; /* total opacity after pointing on it and we could see the element */
+}
+
+.tour-type:hover .tour-name {
+    color: #f26522;
+}
+.tour-price {
+    color: #ffffff;
+    font-size: 10px;
+    line-height: 21px;
+    text-align: left;
+}
+.tour-price-number {
+    font-size: 20px;
+}
+.tour-details {
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 21px;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-end;
+}
+.tour-details:hover {
+    border-bottom: 1px solid #ffffff;
+}
+.tour-name{
+    color:  #fff;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    text-decoration: none;
+}
+.footer {
+    margin-bottom: 20px;
+}
+.copyright {
+    font-family: Verdana;
+    color:  #fff;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: center;
+}

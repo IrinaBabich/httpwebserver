@@ -4,30 +4,23 @@ import java.io.*;
 
 public class ResourceReader {
 
-    private String resourcePath;
+    private String webAppPath;
 
-    ResourceReader(String resourcePath) {
-        this.resourcePath = resourcePath;
+    ResourceReader(String webAppPath) {
+        this.webAppPath = webAppPath;
     }
 
-    public String readContent(String path) throws IOException {
-        File file = new File(resourcePath + path);
+    public InputStream readContent(String path) throws IOException {
+        File resourcePath = new File(webAppPath + path);
 
-        try(BufferedReader fileReader = new BufferedReader(new FileReader(file))) {
-            String line;
-            String content = "";
-            while ((line = fileReader.readLine()) != null) {
-                content += line;
-            }
-            return content;
+        try  {
+            return new FileInputStream(resourcePath);
+        } catch (FileNotFoundException e) {
+            throw new FileNotFoundException();
         }
     }
 
-    public void setResourcePath(String resourcePath) {
-        this.resourcePath = resourcePath;
-    }
-
-    public String getResourcePath() {
-        return resourcePath;
+    public void setWebAppPath(String webAppPath) {
+        this.webAppPath = webAppPath;
     }
 }

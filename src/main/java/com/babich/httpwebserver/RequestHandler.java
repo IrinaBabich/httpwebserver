@@ -1,32 +1,34 @@
 package com.babich.httpwebserver;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 
 public class RequestHandler {
 
-    String resourcePath;
+    private BufferedOutputStream writer;
+    private String resourcePath;
     private BufferedReader reader;
-    private BufferedWriter writer;
 
     public void handle() throws IOException {
         RequestParser requestParser = new RequestParser();
-        Request request = requestParser.parseRequest(reader);
         ResourceReader resourceReader = new ResourceReader(resourcePath);
         ResponseWriter responseWriter = new ResponseWriter();
-        responseWriter.setWriter(writer);
-        resourceReader.setResourcePath(resourcePath);
+        resourceReader.setWebAppPath(resourcePath);
+        responseWriter.setBufferedOutputStream(writer);
+        Request request = requestParser.parseRequest(reader);
         String resourcePath = request.getUrl();
         try {
-            String content = resourceReader.readContent(resourcePath);
+            InputStream inputStream = resourceReader.readContent(resourcePath);
             // если ответ ок, пишем контент в ответ
-            responseWriter.writeSuccessResponse(content);
+            responseWriter.writeSuccessResponse();
+            responseWriter.writeContent(inputStream);
         }catch (FileNotFoundException e){
             // если файла нет, пишем not found
             responseWriter.writeNotFoundResponse();
         }
+    }
+
+    public void setWriter(BufferedOutputStream writer) {
+        this.writer = writer;
     }
 
     public void setResourcePath(String resourcePath) {
@@ -35,9 +37,5 @@ public class RequestHandler {
 
     public void setReader(BufferedReader reader) {
         this.reader = reader;
-    }
-
-    public void setWriter(BufferedWriter writer) {
-        this.writer = writer;
     }
 }
