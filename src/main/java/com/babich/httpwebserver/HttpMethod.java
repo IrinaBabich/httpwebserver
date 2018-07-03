@@ -1,20 +1,35 @@
 package com.babich.httpwebserver;
 
-enum HttpMethod {
-    GET("GET"), POST("POST");
+public enum HttpMethod {
+    GET("GET", "GET"), POST("POST", "SAVE"), DELETE("DELETE");
 
-    private String name;
+    private final String name;
+    private final String restAction;
 
     HttpMethod(String name) {
-        this.name = name;
+        this(name, name);
     }
 
-    static HttpMethod getHttpMethodByName(String name) {
-        for (HttpMethod httpMethod : values()) {
-            if (httpMethod.name.equalsIgnoreCase(name)) {
+    HttpMethod(String name, String restAction) {
+        this.name = name;
+        this.restAction = restAction;
+    }
+
+    public static HttpMethod getHttpMethodByName(String name) {
+        HttpMethod[] values = values();
+        for (HttpMethod httpMethod : values) {
+            if (httpMethod.getName().equalsIgnoreCase(name)) {
                 return httpMethod;
             }
         }
-        throw new IllegalArgumentException("No HttpMethod with name " + name + " found");
+        throw new IllegalArgumentException("No method for name: " + name);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getRestAction() {
+        return restAction;
     }
 }
